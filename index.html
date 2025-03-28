@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Family Movie</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header-container">
+            <span class="static-text">BROUGHT TO YOU BY </span>
+            <span class="rotating-name" id="rotating-name"></span>
+        </div>
+        <div class="video-placeholder">
+            <div class="coming-soon">RED FAM MOVIE COMING SOON</div>
+            <div class="release-date">APRIL 26</div>
+        </div>
+    </div>
+
+    <script>
+        const names = ['SEAN BRINDLE', 'EMILEE WORLEY', 'SARAH OSBORNE', 'JACOB WILLIAMS'];
+        let currentIndex = 0;
+        const nameElement = document.getElementById('rotating-name');
+        
+        function rotateName() {
+            nameElement.classList.add('slide-out');
+            
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % names.length;
+                nameElement.textContent = names[currentIndex];
+                nameElement.classList.remove('slide-out');
+                nameElement.classList.add('slide-in');
+            }, 500);
+
+            setTimeout(() => {
+                nameElement.classList.remove('slide-in');
+            }, 1000);
+        }
+
+        nameElement.textContent = names[0];
+        setInterval(rotateName, 5000);
+    </script>
+</body>
+</html>

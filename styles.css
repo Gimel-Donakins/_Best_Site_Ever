@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    font-family: 'Bebas Neue', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.video-placeholder {
+    background-color: #1a0000;
+    aspect-ratio: 16/9;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #500;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+}
+
+.coming-soon {
+    color: #ff0000;
+    font-size: 3rem;
+    text-align: center;
+    letter-spacing: 4px;
+    animation: pulse 2s infinite;
+}
+
+.release-date {
+    color: #ff0000;
+    font-size: 2rem;
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+.header-container {
+    color: #ff0000;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 3px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.rotating-name {
+    display: inline-block;
+    position: relative;
+}
+
+@keyframes slideOut {
+    to {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-out {
+    animation: slideOut 0.5s forwards;
+}
+
+.slide-in {
+    animation: slideIn 0.5s forwards;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+@media (max-width: 768px) {
+    .coming-soon {
+        font-size: 2rem;
+    }
+    .release-date {
+        font-size: 1.5rem;
+    }
+    .header-container {
+        font-size: 1.8rem;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
