@@ -1,7 +1,22 @@
+/* Theme variables */
+:root[data-theme="dark"] {
+    --bg-color: #000;
+    --text-color: #ff0000;
+    --video-bg: #1a0000;
+    --border-color: #500;
+}
+
+:root[data-theme="light"] {
+    --bg-color: #fff;
+    --text-color: #ff0000;
+    --video-bg: #ffeeee;
+    --border-color: #ffcccc;
+}
+
 body {
     margin: 0;
     padding: 0;
-    background-color: #000;
+    background-color: var(--bg-color);
     font-family: 'Bebas Neue', sans-serif;
     min-height: 100vh;
     display: flex;
@@ -17,19 +32,19 @@ body {
 }
 
 .video-placeholder {
-    background-color: #1a0000;
+    background-color: var(--video-bg);
     aspect-ratio: 16/9;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid #500;
+    border: 2px solid var(--border-color);
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
 }
 
 .coming-soon {
-    color: #ff0000;
+    color: var(--text-color);
     font-size: 3rem;
     text-align: center;
     letter-spacing: 4px;
@@ -37,18 +52,17 @@ body {
 }
 
 .release-date {
-    color: #ff0000;
+    color: var(--text-color);
     font-size: 2rem;
     margin-top: 20px;
     opacity: 0.8;
 }
 
 .header-container {
-    color: #ff0000;
+    color: var(--text-color);
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 30px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     letter-spacing: 3px;
     display: flex;
     justify-content: center;
@@ -98,7 +112,6 @@ body {
     display: block;
     font-size: 2em;
     color: #ff3333;
-    text-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
     margin: 20px 0;
     letter-spacing: 2px;
 }
@@ -109,6 +122,38 @@ body {
     padding: 0 10px;
     border-radius: 5px;
     margin: 0 5px;
+}
+
+.site-header {
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header-content h1 {
+    color: var(--text-color);
+    margin: 0;
+}
+
+.theme-switch select {
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: 'Bebas Neue', sans-serif;
+    cursor: pointer;
 }
 
 @media (max-width: 1024px) {
