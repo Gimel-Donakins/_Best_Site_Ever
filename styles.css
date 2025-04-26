@@ -1,11 +1,3 @@
-/* Theme variables */
-:root[data-theme="dark"] {
-    --bg-color: #000;
-    --text-color: #ff0000;
-    --video-bg: #1a0000;
-    --border-color: #500;
-}
-
 :root[data-theme="light"] {
     --bg-color: #fff;
     --text-color: #ff0000;
@@ -13,67 +5,88 @@
     --border-color: #ffcccc;
 }
 
+/* General page styles */
 body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Bebas Neue', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--bg-color);
-    font-family: 'Bebas Neue', sans-serif;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
+/* Ensure consistent spacing and alignment */
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 95%;
     padding: 20px;
-    margin: 0 auto;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .video-placeholder {
-    background-color: var(--video-bg);
+    background-color: rgb(255, 0, 0); /* Fill with red */
+    color: white; /* White text */
     aspect-ratio: 16/9;
     width: 100%;
+    max-width: 100%; /* Ensures it doesn't exceed the screen width */
+    box-sizing: border-box; /* Includes padding and border in width calculation */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 2px solid var(--border-color);
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+    padding: min(20px, 4%);
+    position: relative;
+    min-height: 200px;
+    margin-top: 0 px; /* Adds consistent spacing from the header-container */
 }
 
 .coming-soon {
-    color: var(--text-color);
-    font-size: 3rem;
+    color: white;
+    font-size: clamp(1.5rem, 4vw, 3rem);
     text-align: center;
-    letter-spacing: 4px;
+    letter-spacing: clamp(1px, 0.5vw, 4px);
     animation: pulse 2s infinite;
+    padding: 0 clamp(10px, 2vw, 20px);
+    margin: 0;
 }
 
 .release-date {
-    color: var(--text-color);
-    font-size: 2rem;
-    margin-top: 20px;
+    color: white;
+    font-size: clamp(1rem, 3vw, 2rem);
+    text-align: center;
+    margin-top: clamp(5px, 1vw, 10px);
     opacity: 0.8;
+    padding: 0 clamp(10px, 2vw, 20px);
 }
 
 .header-container {
-    color: var(--text-color);
+    color: red;
     font-size: 2.5rem;
     text-align: center;
-    margin-bottom: 30px;
     letter-spacing: 3px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Vertically centers content */
+    height: calc(50vh - 100px); /* Adjust height to center between header and video */
+    margin-top: 30px; /* Ensures equal spacing from the video placeholder */
     gap: 15px;
     flex-wrap: wrap;
-    padding: 0 10px;
+    padding: 20px;
 }
 
 .rotating-name {
     display: inline-block;
     position: relative;
+    animation: slideIn 0.5s forwards;
 }
 
 @keyframes slideOut {
@@ -94,14 +107,6 @@ body {
     }
 }
 
-.slide-out {
-    animation: slideOut 0.5s forwards;
-}
-
-.slide-in {
-    animation: slideIn 0.5s forwards;
-}
-
 @keyframes pulse {
     0% { opacity: 0.5; }
     50% { opacity: 1; }
@@ -110,10 +115,11 @@ body {
 
 #countdown {
     display: block;
-    font-size: 2em;
-    color: #ff3333;
-    margin: 20px 0;
+    font-size: clamp(1.2rem, 3vw, 2em);
+    color: #ffcbcb;
+    margin: clamp(10px, 2vw, 20px) 0;
     letter-spacing: 2px;
+    text-align: center;
 }
 
 #countdown span {
@@ -124,8 +130,12 @@ body {
     margin: 0 5px;
 }
 
+/* Header banner styles */
 .site-header {
-    padding: 1rem;
+    background-color: red;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
     position: fixed;
     top: 0;
     width: 100%;
@@ -142,20 +152,49 @@ body {
 }
 
 .header-content h1 {
-    color: var(--text-color);
+    color: white;
     margin: 0;
 }
 
-.theme-switch select {
-    background: var(--bg-color);
-    color: var(--text-color);
-    border: 1px solid var(--text-color);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-family: 'Bebas Neue', sans-serif;
-    cursor: pointer;
+/* Cast section styles */
+.cast-section {
+    width: 100%;
+    padding: 20px;
+    margin-top: 40px;
 }
 
+.cast-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 75px;
+    justify-content: center;
+    align-items: start;
+    padding: 20px;
+}
+
+.cast-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;  /* Set fixed width */
+    flex-shrink: 0;  /* Prevent shrinking below min-width */
+}
+
+.cast-member img {
+    width: 400px;
+    height: auto;  /* Fixed height for consistent sizing */
+    object-fit: cover;  /* Maintain aspect ratio and cover container */
+    border: 2px solid var(--border-color);
+}
+
+.cast-member .name {
+    margin-top: 10px;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Responsive adjustments */
 @media (max-width: 1024px) {
     .header-container {
         font-size: 2rem;
@@ -171,24 +210,33 @@ body {
 @media (max-width: 768px) {
     .container {
         padding: 15px;
+        gap: 15px;
     }
     .header-container {
         font-size: 1.8rem;
         flex-direction: column;
-        gap: 5px;
+        gap: 10px;
     }
     .coming-soon {
         font-size: 2rem;
         padding: 0 10px;
+        letter-spacing: clamp(1px, 0.3vw, 2px);
     }
     .release-date {
         font-size: 1.5rem;
+    }
+    .video-placeholder {
+        padding: min(15px, 3%);
+    }
+    .cast-grid {
+        gap: 40px;
     }
 }
 
 @media (max-width: 480px) {
     .container {
         padding: 10px;
+        gap: 10px;
     }
     .header-container {
         font-size: 1.5rem;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +11,6 @@
     <header class="site-header">
         <div class="header-content">
             <h1>Red Family</h1>
-            <div class="theme-switch">
-                <select id="themeSelect">
-                    <option value="dark">Dark Mode</option>
-                    <option value="light">Light Mode</option>
-                </select>
-            </div>
         </div>
     </header>
     <div class="container">
@@ -28,23 +22,38 @@
             <div class="coming-soon">RED FAM MOVIE COMING IN<br><span id="countdown"></span></div>
             <div class="release-date">APRIL 26</div>
         </div>
+        <section class="cast-section">
+            <div class="cast-grid">
+                <script>
+                    // Get all PNG files from the headshots folder
+                    const headshots = [
+                        'headshots/Emilee Worley.jpg',
+                        'headshots/Sean Brindle.jpg',
+                        'headshots/Will Sams.jpg',
+                        'headshots/Owen Silva.jpg',
+                        'headshots/Rachel Stephen.jpg',
+                        'headshots/Katherine Band.jpg',
+                        'headshots/Jimmy Board.jpg',
+                        'headshots/Ian Russell.jpg',
+                    ];
+                    
+                    // Create cast member elements
+                    headshots.forEach(headshot => {
+                        const name = headshot.split('/').pop().replace('.jpg' || '.png', '');
+                        const div = document.createElement('div');
+                        div.className = 'cast-member';
+                        div.innerHTML = `
+                            <img src="${headshot}" alt="${name}">
+                            <div class="name">${name}</div>
+                        `;
+                        document.querySelector('.cast-grid').appendChild(div);
+                    });
+                </script>
+            </div>
+        </section>
     </div>
 
     <script>
-        const themeSelect = document.getElementById('themeSelect');
-        
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        themeSelect.value = savedTheme;
-
-        // Theme switch handler
-        themeSelect.addEventListener('change', (e) => {
-            const theme = e.target.value;
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-        });
-
         const names = ['SEAN BRINDLE', 'EMILEE WORLEY', 'SARAH OSBORNE', 'JACOB WILLIAMS'];
         let currentIndex = 0;
         const nameElement = document.getElementById('rotating-name');
