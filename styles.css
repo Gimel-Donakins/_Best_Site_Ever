@@ -188,11 +188,11 @@ body {
 }
 
 .cast-member:nth-child(odd) {
-    transform: translateX(-15%);  /* Reduced offset for better visibility */
+    transform: translateX(-15%);
 }
 
 .cast-member:nth-child(even) {
-    transform: translateX(15%);  /* Reduced offset for better visibility */
+    transform: translateX(15%);
 }
 
 .cast-member img {
@@ -240,13 +240,11 @@ body {
         gap: 20px;
     }
     
-    .cast-member:nth-child(4n + 1),
-    .cast-member:nth-child(4n + 4) {
+    .cast-member:nth-child(odd) {
         transform: translateX(-10%);
     }
 
-    .cast-member:nth-child(4n + 2),
-    .cast-member:nth-child(4n + 3) {
+    .cast-member:nth-child(even) {
         transform: translateX(10%);
     }
 }
